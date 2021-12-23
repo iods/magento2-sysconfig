@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * An improved configuration suite for Magento 2 admins and developers.
+ *
+ * @category  Iods
+ * @version   000.1.0 (100.1.0-v1)
+ * @author    Rye Miller <rye@drkstr.dev>
+ * @copyright Copyright (c) 2021, Rye Miller (http://ryemiller.io)
+ * @license   MIT (https://en.wikipedia.org/wiki/MIT_License)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+
+    <!--
+    /*
+     * Notes:
+     *
+     */
+    -->
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin" title="Admin">
+                <resource id="Magento_Backend::stores" title="Stores">
+                    <resource id="Magento_Backend::stores_settings" title="Stores Settings">
+                        <resource id="Magento_Config::config" title="Config">
+                            <resource id="Iods_Core::iods" title="Dark Society">
+                                <resource id="Iods_Configs::settings" title="Settings" />
+                            </resource>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

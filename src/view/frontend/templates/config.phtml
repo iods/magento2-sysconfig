@@ -1,0 +1,68 @@
+<?php
+/**
+ * An improved configuration suite for Magento 2 admins and developers.
+ *
+ * @category  Iods
+ * @version   000.1.0 (100.1.0-v1)
+ * @author    Rye Miller <rye@drkstr.dev>
+ * @copyright Copyright (c) 2021, Rye Miller (http://ryemiller.io)
+ * @license   MIT (https://en.wikipedia.org/wiki/MIT_License)
+ *
+ * @var ConfigPool $config
+ * @var Magento\Framework\View\Element\Template $block
+ * @var Magento\Framework\Escaper $escaper
+ *
+ */
+declare(strict_types=1);
+
+use Iods\Configs\ViewModel\ConfigPool;
+
+$config = $block->getConfig();
+if (!$config->getGeneralConfig()->isEnabled()) {
+    echo $escaper->escapeHtml(__('Go to the admin panel and change the settings:'));
+    echo $escaper->escapeHtml(__('Stores -> Configuration -> Iods -> General Settings -> Enabled -> enable'));
+    return;
+}
+?>
+<h2><?= $escaper->escapeHtml(__('General Settings')) ?></h2>
+<table>
+    <tr>
+        <td><?= $escaper->escapeHtml(__('API URL (Dark Society)')) ?></td>
+        <td><?= $escaper->escapeHtml($config->getGeneralConfig()->getApiUrl()) ?></td>
+    </tr>
+    <tr>
+        <td><?= $escaper->escapeHtml(__('API Key (Dark Society)')) ?></td>
+        <td><?= $escaper->escapeHtml($config->getGeneralConfig()->getApiKey()) ?></td>
+    </tr>
+    <tr>
+        <td><?= $escaper->escapeHtml(__('Account Email')) ?></td>
+        <td><?= $escaper->escapeHtml($config->getGeneralConfig()->getEmail()) ?></td>
+    </tr>
+    <tr>
+        <td><?= $escaper->escapeHtml(__('Time')) ?></td>
+        <td><?= $escaper->escapeHtml($config->getGeneralConfig()->getTime()) ?></td>
+    </tr>
+    <tr>
+        <td><?= $escaper->escapeHtml(__('Locations')) ?></td>
+        <td><?= $escaper->escapeHtml($config->getGeneralConfig()->getCountries()) ?></td>
+    </tr>
+</table>
+<h2><?= $escaper->escapeHtml(__('Dynamic Settings')) ?></h2>
+<table>
+    <tr>
+        <th><?= $escaper->escapeHtml(__('From')) ?></th>
+        <th><?= $escaper->escapeHtml(__('To')) ?></th>
+        <th><?= $escaper->escapeHtml(__('Price')) ?></th>
+        <th><?= $escaper->escapeHtml(__('Tax')) ?></th>
+    </tr>
+    <?php foreach ($config->getFormDynamicConfig()->getFormValues() as $i): ?>
+    <tr>
+        <td><?= $escaper->escapeHtml($i['from_qty']) ?></td>
+        <td><?= $escaper->escapeHtml($i['to_qty']) ?></td>
+        <td><?= $escaper->escapeHtml($i['price']) ?></td>
+        <td><?= $escaper->escapeHtml($i['tax']) ?></td>
+    </tr>
+    <?php endforeach; ?>
+</table>
+<h2><?= $escaper->escapeHtml(__('Frontend Settings')) ?></h2>
+<div style="height: 20px; background-color: <?= $escaper->escapeHtml($config->getFrontendModelConfig()->getColor()) ?>"></div>
