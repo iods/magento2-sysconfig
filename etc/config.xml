@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * An improved configuration suite for Magento 2 admins and developers.
+ *
+ * @category  Iods
+ * @version   000.1.0 (100.1.0-v1)
+ * @author    Rye Miller <rye@drkstr.dev>
+ * @copyright Copyright (c) 2021, Rye Miller (http://ryemiller.io)
+ * @license   MIT (https://en.wikipedia.org/wiki/MIT_License)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+
+    <default>
+        <configs>
+            <general>
+                <api_url>https://api.thedarksociety.com</api_url>
+                <countries>AF, AD, AT, BE, US</countries>
+            </general>
+            <form_dynamic>
+                <values>{"item1":{"from_qty":"1","to_qty":"5","price":"10.00","tax":"1"},"item2":{"from_qty":"3","to_qty":"15","price":"20.00","tax":"1"},"item3":{"from_qty":"5","to_qty":"25","price":"30.00","tax":"1"},"item4":{"from_qty":"7","to_qty":"35","price":"40.00","tax":"1"},"item5":{"from_qty":"9","to_qty":"45","price":"50.00","tax":"1"}}</values>
+            </form_dynamic>
+            <frontend_model>
+                <color>#004445</color>
+            </frontend_model>
+        </configs>
+    </default>
+</config>

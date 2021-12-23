@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * An improved configuration suite for Magento 2 admins and developers.
+ *
+ * @category  Iods
+ * @version   000.1.0 (100.1.0-v1)
+ * @author    Rye Miller <rye@drkstr.dev>
+ * @copyright Copyright (c) 2021, Rye Miller (http://ryemiller.io)
+ * @license   MIT (https://en.wikipedia.org/wiki/MIT_License)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <!--
+    /**
+     * Iods Core contains module tab.
+     */
+    -->
+    <section id="iods_configs" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="888" translate="label">
+
+        <class>separator-top</class>
+        <label>General Configurations</label>
+        <tab>iods</tab>
+        <resource>Iods_Configs::iods_settings</resource>
+
+        <group id="general" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
+
+            <label>General Settings</label>
+            <field id="enabled" showInDefault="1" sortOrder="10" translate="label" type="select">
+                <label>Enabled</label>
+                <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+            </field>
+            <field id="api_url" showInDefault="1" sortOrder="20" translate="label" type="text" canRestore="1">
+                <label>API URL</label>
+                <validate>required-entry</validate>
+                <depends>
+                    <field id="enabled">1</field>
+                </depends>
+            </field>
+            <field id="api_key" showInDefault="1" sortOrder="30" translate="label" type="obscure">
+                <label>API Key</label>
+                <validate>required-entry</validate>
+                <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                <depends>
+                    <field id="enabled">1</field>
+                </depends>
+            </field>
+            <field id="email" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="40" translate="label" type="text">
+                <label>Email Address</label>
+                <validate>validate-email</validate>
+                <backend_model>Magento\Config\Model\Config\Backend\Email\Address</backend_model>
+                <depends>
+                    <field id="enabled">1</field>
+                </depends>
+            </field>
+            <field id="location" showInDefault="1" showInWebsite="1" sortOrder="50" translate="label" type="multiselect">
+                <label>Location (Country)</label>
+                <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                <can_be_empty>1</can_be_empty>
+                <depends>
+                    <field id="enabled">1</field>
+                </depends>
+            </field>
+            <field id="time" showInDefault="1" sortOrder="60" translate="label" type="time">
+                <label>Start Time</label>
+                <depends>
+                    <field id="enabled">1</field>
+                </depends>
+            </field>
+            <field id="cron_expire" showInDefault="1" sortOrder="63" translate="label" type="text" canRestore="1">
+                <label>Cron Schedule (cron syntax)</label>
+                <comment><![CDATA[
+                    <a href="https://crontab.guru/" target="_blank">Need Help?</a>
+                ]]></comment>
+                <depends>
+                    <field id="enabled">1</field>
+                </depends>
+            </field>
+            <field id="enabled_stub" sortOrder="65" showInDefault="1" translate="label" type="select">
+                <label>Enable Stubs</label>
+                <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                <depends>
+                    <field id="enabled">1</field>
+                </depends>
+            </field>
+            <field id="stub_one" sortOrder="67" showInDefault="1" translate="label" type="textarea" canRestore="1">
+                <label>Request One Response</label>
+                <depends>
+                    <field id="enabled">1</field>
+                    <field id="enabled_stub">1</field>
+                </depends>
+            </field>
+            <field id="stub_two" sortOrder="68" showInDefault="1" translate="label" type="textarea" canRestore="1">
+                <label>Request Two Response</label>
+                <depends>
+                    <field id="enabled">1</field>
+                    <field id="enabled_stub">1</field>
+                </depends>
+            </field>
+        </group>
+
+        <group id="form_dynamic" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="70" translate="label" type="text">
+
+            <label>Dynamic Form Settings</label>
+            <field id="values" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="72" translate="label">
+                <label>Ranges</label>
+                <frontend_model>Iods\Configs\Block\Adminhtml\Form\Field\Ranges</frontend_model>
+                <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                <comment><![CDATA[
+                    <a href="https://devdocs.magento.com/guides/v2.4/ext-best-practices/tutorials/dynamic-row-system-config.html" target="_blank">Dynamic Row System Configuration</a>
+                ]]></comment>
+            </field>
+        </group>
+
+        <group id="frontend_model" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="70" translate="label" type="text">
+            <label>Frontend Model Settings</label>
+            <field id="color" translate="label,comment" type="text" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10">
+                <label>Color</label>
+                <frontend_model>Iods\Configs\Block\Adminhtml\ColorPicker</frontend_model>
+                <comment>Default is #004445</comment>
+            </field>
+        </group>
+    </section>
+</config>

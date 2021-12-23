@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * An improved configuration suite for Magento 2 admins and developers.
+ *
+ * @category  Iods
+ * @version   000.1.0 (100.1.0-v1)
+ * @author    Rye Miller <rye@drkstr.dev>
+ * @copyright Copyright (c) 2021, Rye Miller (http://ryemiller.io)
+ * @license   MIT (https://en.wikipedia.org/wiki/MIT_License)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+
+    <router id="standard">
+        <route id="iods_configs" frontName="configs">
+            <module name="Iods_Configs" />
+        </route>
+    </router>
+</config>

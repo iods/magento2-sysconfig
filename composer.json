@@ -1,21 +1,37 @@
 {
   "name": "iods/module-configs",
-  "description": "A configuration management framework for Magento 2.",
+  "description": "An improved configuration suite for Magento 2 admins and developers.",
   "type": "magento2-module",
-  "homepage": "http://ryemiller.io",
   "license": [
     "MIT"
   ],
+  "authors": [
+    {
+      "name": "Rye Miller",
+      "email": "rye@drkstr.dev",
+      "homepage": "https://ryemiller.io",
+      "role": "Developer"
+    }
+  ],
+  "minimum-stability": "dev",
+  "repositories": {
+    "magento": {
+      "type": "composer",
+      "url": "https://repo.magento.com/"
+    }
+  },
   "require": {
-    "php": ">=7.3.0",
-
-    "iods/module-core": "^1.0"
+    "php": "^7.3|^7.4",
+    "magento/framework": "103.0.*",
+    "magento/module-config": "101.2.*",
+    "magento/module-backend": "102.0.*",
+    "symfony/console": "*"
   },
   "autoload": {
     "files": ["registration.php"],
     "psr-4": {
-      "Iods\\Configs\\": ""
+      "Iods\\Configs\\": "src"
     }
   },
-  "version": "0.1.0"
+  "version": "000.1.0"
 }

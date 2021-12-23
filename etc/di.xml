@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * An improved configuration suite for Magento 2 admins and developers.
+ *
+ * @category  Iods
+ * @version   000.1.0 (100.1.0-v1)
+ * @author    Rye Miller <rye@drkstr.dev>
+ * @copyright Copyright (c) 2021, Rye Miller (http://ryemiller.io)
+ * @license   MIT (https://en.wikipedia.org/wiki/MIT_License)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+
+    <type name="Iods\Configs\Model\System\Config\General">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="enabled" xsi:type="string">configs/general/enabled</item>
+                <item name="api_url" xsi:type="string">configs/general/api_url</item>
+                <item name="api_key" xsi:type="string">configs/general/api_key</item>
+                <item name="email" xsi:type="string">configs/general/email</item>
+                <item name="countries" xsi:type="string">configs/general/countries</item>
+                <item name="time" xsi:type="string">configs/general/time</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Iods\Configs\Model\System\Config\FormDynamic">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="values" xsi:type="string">configs/form_dynamic/values</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Iods\Configs\Model\System\Config\FrontendModel">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="color" xsi:type="string">configs/frontend_model/color</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

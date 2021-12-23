@@ -1,19 +1,22 @@
 <?xml version="1.0"?>
 <!--
 /**
- * DISCLAIMER
- * Do not edit or add to this file if you wish to upgrade the modules
- * in the Darkstar Magento 2 Suite to newer versions in the future.
+ * An improved configuration suite for Magento 2 admins and developers.
  *
  * @category  Iods
- * @package   Iods_Configs
- * @version
+ * @version   000.1.0 (100.1.0-v1)
  * @author    Rye Miller <rye@drkstr.dev>
- * @copyright Copyright (c) 2020, Rye Miller (http://ryemiller.io)
+ * @copyright Copyright (c) 2021, Rye Miller (http://ryemiller.io)
  * @license   MIT (https://en.wikipedia.org/wiki/MIT_License)
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+  <!--
+  /*
+   * Notes:
+   *
+   */
+  -->
   <module name="Iods_Configs" setup_version="0.0.1" />
 </config>

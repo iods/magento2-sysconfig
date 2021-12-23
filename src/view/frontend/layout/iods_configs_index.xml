@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * An improved configuration suite for Magento 2 admins and developers.
+ *
+ * @category  Iods
+ * @version   000.1.0 (100.1.0-v1)
+ * @author    Rye Miller <rye@drkstr.dev>
+ * @copyright Copyright (c) 2021, Rye Miller (http://ryemiller.io)
+ * @license   MIT (https://en.wikipedia.org/wiki/MIT_License)
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <!--
+    /*
+     * Notes:
+     *
+     */
+    -->
+    <head>
+        <title>Iods Configuration Suite for Magento</title>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="iods.configs.default"
+                   template="Iods_Configs::config.phtml">
+                <arguments>
+                    <argument name="config_pool" xsi:type="object">Iods\Configs\ViewModel\ConfigPool</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
