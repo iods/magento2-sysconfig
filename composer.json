@@ -1,6 +1,6 @@
 {
-  "name": "iods/module-configs",
-  "description": "An improved configuration suite for Magento 2 admins and developers.",
+  "name": "iods/module-sysconfig",
+  "description": "Configuration management support for Magento 2. Whatever that means.",
   "type": "magento2-module",
   "license": [
     "MIT"
@@ -21,16 +21,16 @@
     }
   },
   "require": {
-    "php": "^7.3|^7.4",
-    "magento/framework": "103.0.*",
-    "magento/module-config": "101.2.*",
-    "magento/module-backend": "102.0.*",
+    "php": "",
+    "magento/framework": "104.0.*",
+    "magento/module-config": "*",
+    "magento/module-backend": "*",
     "symfony/console": "*"
   },
   "autoload": {
     "files": ["registration.php"],
     "psr-4": {
-      "Iods\\Configs\\": "src"
+      "Iods\\SysConfig\\": "src"
     }
   },
   "version": "000.1.0"
