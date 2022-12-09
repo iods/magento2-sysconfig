@@ -32,6 +32,5 @@
     "psr-4": {
       "Iods\\SysConfig\\": "src"
     }
-  },
-  "version": "000.1.0"
+  }
 }
