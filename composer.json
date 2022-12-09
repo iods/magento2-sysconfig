@@ -21,7 +21,7 @@
     }
   },
   "require": {
-    "php": "",
+    "php": ">=8",
     "magento/framework": "104.0.*",
     "magento/module-config": "*",
     "magento/module-backend": "*",
