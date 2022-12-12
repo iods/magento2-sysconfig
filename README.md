@@ -7,6 +7,7 @@ Functionality provided by this module include:
  * CRUD operations for modules to utilize
  * Custom field models and templates for additional field types
  * Grid examples for displaying existing data
+ * Extends the config key options available to the GraphQL endpoints
 
 
 Table of Contents
@@ -84,8 +85,6 @@ Development
 
 #### Controllers
 
-### Observers
-
 ### Plugins
 
 ### etc
@@ -101,6 +100,13 @@ Extensibility
 
 Configurations
 --------------
+
+Configuration options available from the module.
+
+| Section   | Group     | Field  | Type | Description |
+|---|---|---|---|---|
+| `iods_base` | sysconfig | `enable` | select | Enables and disables the module (enabled by default). |
+
 
 UI Components
 -------------

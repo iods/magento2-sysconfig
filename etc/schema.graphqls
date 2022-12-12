@@ -1,0 +1,5 @@
+type StoreConfig {
+    carriers_freeshipping_free_shipping_subtotal : String  @doc(description: "Extended Config Data - carriers/freeshipping/free_shipping_subtotal")
+    design_search_engine_robots_custom_instructions : String  @doc(description: "Robots Custom Instructions - design/search_engine_robots/custom_instructions")
+    design_search_engine_robots_default_robots : String  @doc(description: "Default Robots - design/search_engine_robots/default_robots")
+}

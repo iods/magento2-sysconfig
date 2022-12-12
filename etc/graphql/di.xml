@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Configuration management support for Magento 2. Whatever that means.
+ *
+ * @package   Iods\SysConfig
+ * @author    Rye Miller <rye@drkstr.dev>
+ * @copyright Copyright (c) 2022, Rye Miller (http://ryemiller.io)
+ * @license   See LICENSE for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\StoreGraphQl\Model\Resolver\Store\StoreConfigDataProvider">
+        <arguments>
+            <argument name="extendedConfigData" xsi:type="array">
+                <item name="carriers_freeshipping_free_shipping_subtotal" xsi:type="string">carriers/freeshipping/free_shipping_subtotal</item>
+                <item name="design_search_engine_robots_custom_instructions" xsi:type="string">design/search_engine_robots/custom_instructions</item>
+                <item name="design_search_engine_robots_default_robots" xsi:type="string">design/search_engine_robots/default_robots</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
