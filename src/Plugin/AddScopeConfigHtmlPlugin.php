@@ -9,10 +9,12 @@
  */
 declare(strict_types=1);
 
+namespace Iods\SysConfig\Plugin;
+
 use Magento\Config\Block\System\Config\Form\Field;
 use Magento\Framework\Data\Form\Element\AbstractElement;
 
-class AddScopeConfigHtml
+class AddScopeConfigHtmlPlugin
 {
     protected GenerateScopeConfigHtml $_html_service;
 

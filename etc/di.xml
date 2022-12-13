@@ -11,10 +11,22 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
     <type name="Magento\Config\Block\System\Config\Form\Field">
         <plugin name="add_scope_hint_html"
-                sortOrder="10"
-                type="Iods\SysConfig\Plugin\Config\Block\System\Config\Form\AddScopeHintHtml" />
+                type="Iods\SysConfig\Plugin\AddScopeConfigHtmlPlugin" />
+    </type>
+    <type name="Magento\Config\Model\Config\Structure\Converter">
+        <plugin name="Iods_SysConfig::add_sort_order_to_labels"
+                type="Iods\SysConfig\Plugin\AddSortOrderToLabelPlugin" />
+    </type>
+    <type name="Magento\Config\Model\Config\Structure\Element\Field">
+        <plugin name="Iods_SysConfig::add_path_to_comment"
+                type="Iods\SysConfig\Plugin\AddConfigPathToCommentPlugin" />
+    </type>
+    <type name="Magento\Framework\Acl\AclResource\Provider">
+        <plugin name="Iods_SysConfig::add_sort_order_to_resource_labels"
+                type="Iods\SysConfig\Plugin\AddSortOrderToResourceLabelPlugin" />
     </type>
 
     <type name="Iods\Configs\Model\System\Config\General">
@@ -43,4 +55,5 @@
             </argument>
         </arguments>
     </type>
+
 </config>
