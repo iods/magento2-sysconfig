@@ -1,18 +1,21 @@
 <?xml version="1.0"?>
 <!--
 /**
- * An improved configuration suite for Magento 2 admins and developers.
+ * Configuration management support for Magento 2. Whatever that means.
  *
- * @category  Iods
- * @version   000.1.0 (100.1.0-v1)
+ * @package   Iods\SysConfig
  * @author    Rye Miller <rye@drkstr.dev>
- * @copyright Copyright (c) 2021, Rye Miller (http://ryemiller.io)
- * @license   MIT (https://en.wikipedia.org/wiki/MIT_License)
+ * @copyright Copyright (c) 2022, Rye Miller (http://ryemiller.io)
+ * @license   See LICENSE for license details.
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-
+    <type name="Magento\Config\Block\System\Config\Form\Field">
+        <plugin name="add_scope_hint_html"
+                sortOrder="10"
+                type="Iods\SysConfig\Plugin\Config\Block\System\Config\Form\AddScopeHintHtml" />
+    </type>
 
     <type name="Iods\Configs\Model\System\Config\General">
         <arguments>

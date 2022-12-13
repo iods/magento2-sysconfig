@@ -6,7 +6,7 @@ The `Iods_SysConfig` module is a configuration management framework for the Mage
 Functionality provided by this module include:
  * CRUD operations for modules to utilize
  * Custom field models and templates for additional field types
- * Grid examples for displaying existing data
+ * Scope details in popups when editing configuration options
  * Extends the config key options available to the GraphQL endpoints
 
 

@@ -20,5 +20,11 @@
     -->
     <head>
         <css src="jquery/colorpicker/css/colorpicker.css" />
+        <css src="Iods_SysConfig::css/scopeconfig.css"/>
     </head>
+    <body>
+        <referenceContainer name="js">
+            <block class="Magento\Backend\Block\Template" name="iods_system_config_scope_config_html" template="Iods_SysConfig::activate.phtml" />
+        </referenceContainer>
+    </body>
 </page>

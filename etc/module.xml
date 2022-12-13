@@ -1,26 +1,19 @@
 <?xml version="1.0"?>
 <!--
 /**
- * An improved configuration suite for Magento 2 admins and developers.
+ * Configuration management support for Magento 2. Whatever that means.
  *
- * @category  Iods
- * @version   000.1.0 (100.1.0-v1)
+ * @package   Iods\SysConfig
  * @author    Rye Miller <rye@drkstr.dev>
- * @copyright Copyright (c) 2021, Rye Miller (http://ryemiller.io)
- * @license   MIT (https://en.wikipedia.org/wiki/MIT_License)
+ * @copyright Copyright (c) 2022, Rye Miller (http://ryemiller.io)
+ * @license   See LICENSE for license details.
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-  <!--
-  /*
-   * Notes:
-   *
-   */
-  -->
-  <module name="Iods_Configs" setup_version="0.0.1">
-    <sequence>
-      <module name="Magento_StoreGraphQl"/>
-    </sequence>
-  </module>
+    <module name="Iods_SysConfig" setup_version="0.1.1" schema_version="0.1.1" data_version="0.1.1">
+        <sequence>
+          <module name="Magento_StoreGraphQl"/>
+        </sequence>
+    </module>
 </config>
