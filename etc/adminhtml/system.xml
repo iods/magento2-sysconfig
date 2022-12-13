@@ -1,125 +1,186 @@
 <?xml version="1.0"?>
 <!--
 /**
- * An improved configuration suite for Magento 2 admins and developers.
+ * An evolving framework for managing system configurations in Magento 2.
  *
- * @category  Iods
- * @version   000.1.0 (100.1.0-v1)
+ * @package   Iods\SysConfig
  * @author    Rye Miller <rye@drkstr.dev>
- * @copyright Copyright (c) 2021, Rye Miller (http://ryemiller.io)
- * @license   MIT (https://en.wikipedia.org/wiki/MIT_License)
+ * @copyright Copyright (c) 2022, Rye Miller (http://ryemiller.io)
+ * @license   See LICENSE file for license details.
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
-    <!--
-    /**
-     * Iods Core contains module tab.
-     */
-    -->
-    <section id="iods_configs" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="888" translate="label">
 
-        <class>separator-top</class>
-        <label>General Configurations</label>
-        <tab>iods</tab>
-        <resource>Iods_Configs::iods_settings</resource>
+    <system>
+        <section id="base" translate="label"
+                 sortOrder="10"
+                 showInDefault="1" showInWebsite="1" showInStore="1">
+            <resource>Iods_Base::config</resource>
 
-        <group id="general" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
+            <group id="base_config" translate="label" type="text"
+                   sortOrder="10"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
 
-            <label>General Settings</label>
-            <field id="enabled" showInDefault="1" sortOrder="10" translate="label" type="select">
-                <label>Enabled</label>
-                <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
-            </field>
-            <field id="api_url" showInDefault="1" sortOrder="20" translate="label" type="text" canRestore="1">
-                <label>API URL</label>
-                <validate>required-entry</validate>
-                <depends>
-                    <field id="enabled">1</field>
-                </depends>
-            </field>
-            <field id="api_key" showInDefault="1" sortOrder="30" translate="label" type="obscure">
-                <label>API Key</label>
-                <validate>required-entry</validate>
-                <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
-                <depends>
-                    <field id="enabled">1</field>
-                </depends>
-            </field>
-            <field id="email" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="40" translate="label" type="text">
-                <label>Email Address</label>
-                <validate>validate-email</validate>
-                <backend_model>Magento\Config\Model\Config\Backend\Email\Address</backend_model>
-                <depends>
-                    <field id="enabled">1</field>
-                </depends>
-            </field>
-            <field id="location" showInDefault="1" showInWebsite="1" sortOrder="50" translate="label" type="multiselect">
-                <label>Location (Country)</label>
-                <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
-                <can_be_empty>1</can_be_empty>
-                <depends>
-                    <field id="enabled">1</field>
-                </depends>
-            </field>
-            <field id="time" showInDefault="1" sortOrder="60" translate="label" type="time">
-                <label>Start Time</label>
-                <depends>
-                    <field id="enabled">1</field>
-                </depends>
-            </field>
-            <field id="cron_expire" showInDefault="1" sortOrder="63" translate="label" type="text" canRestore="1">
-                <label>Cron Schedule (cron syntax)</label>
+                <field id="sysconfig_enabled" translate="label comment" type="select"
+                       sortOrder="25"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Config API Enabled]]></label>
+                    <config_path>base/base_config/sysconfig_enabled</config_path>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[
+                        Select <b>No</b> to temporarily disable this module and all of its settings.
+                    ]]></comment>
+                </field>
+            </group>
+
+            <group id="sysconfig_global" translate="label comment" type="text"
+                   sortOrder="20"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <label><![CDATA[Sample Config API Settings]]></label>
                 <comment><![CDATA[
+                    Take ownership over the configuration API for making store management simple.
+                ]]></comment>
+
+                <field id="sysconfig_enabled_example" translate="label comment" type="select"
+                       sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Config API Examples Enabled]]></label>
+                    <config_path>base/sysonfig_global/sysconfig_enabled_example</config_path>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[
+                        Select <b>Yes</b> to temporarily review the various options provided by ioDS and Magento.
+                    ]]></comment>
+                </field>
+
+                <field id="sysconfig_field_text" translate="label comment tooltip" type="text"
+                       sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Text Field Example]]></label>
+                    <config_path>base/sysonfig_global/sysconfig_field_text</config_path>
+                    <comment><![CDATA[
+                        This is an example of a <b>Text</b> field type.
+                    ]]></comment>
+                    <tooltip>This is a an example of a Text field type using a Tooltip.</tooltip>
+                    <depends>
+                        <field id="*/*/sysconfig_enabled_example">1</field>
+                    </depends>
+                </field>
+
+                <field id="sysconfig_field_enabledisable" translate="label comment" type="select"
+                       sortOrder="30"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label><![CDATA[Enabled Field Example]]></label>
+                    <config_path>base/sysonfig_global/sysconfig_field_enabledisable</config_path>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <comment><![CDATA[
+                        This is an example of a <b>Select</b> field type using Enable/Disable.
+                    ]]></comment>
+                    <depends>
+                        <field id="*/*/sysconfig_enabled_example">1</field>
+                    </depends>
+                </field>
+
+            </group>
+
+            <group id="general" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
+
+                <label>General Settings</label>
+                <field id="enabled" showInDefault="1" sortOrder="10" translate="label" type="select">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="api_url" showInDefault="1" sortOrder="20" translate="label" type="text" canRestore="1">
+                    <label>API URL</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="api_key" showInDefault="1" sortOrder="30" translate="label" type="obscure">
+                    <label>API Key</label>
+                    <validate>required-entry</validate>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="email" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="40" translate="label" type="text">
+                    <label>Email Address</label>
+                    <validate>validate-email</validate>
+                    <backend_model>Magento\Config\Model\Config\Backend\Email\Address</backend_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="location" showInDefault="1" showInWebsite="1" sortOrder="50" translate="label" type="multiselect">
+                    <label>Location (Country)</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <can_be_empty>1</can_be_empty>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="time" showInDefault="1" sortOrder="60" translate="label" type="time">
+                    <label>Start Time</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="cron_expire" showInDefault="1" sortOrder="63" translate="label" type="text" canRestore="1">
+                    <label>Cron Schedule (cron syntax)</label>
+                    <comment><![CDATA[
                     <a href="https://crontab.guru/" target="_blank">Need Help?</a>
                 ]]></comment>
-                <depends>
-                    <field id="enabled">1</field>
-                </depends>
-            </field>
-            <field id="enabled_stub" sortOrder="65" showInDefault="1" translate="label" type="select">
-                <label>Enable Stubs</label>
-                <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
-                <depends>
-                    <field id="enabled">1</field>
-                </depends>
-            </field>
-            <field id="stub_one" sortOrder="67" showInDefault="1" translate="label" type="textarea" canRestore="1">
-                <label>Request One Response</label>
-                <depends>
-                    <field id="enabled">1</field>
-                    <field id="enabled_stub">1</field>
-                </depends>
-            </field>
-            <field id="stub_two" sortOrder="68" showInDefault="1" translate="label" type="textarea" canRestore="1">
-                <label>Request Two Response</label>
-                <depends>
-                    <field id="enabled">1</field>
-                    <field id="enabled_stub">1</field>
-                </depends>
-            </field>
-        </group>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="enabled_stub" sortOrder="65" showInDefault="1" translate="label" type="select">
+                    <label>Enable Stubs</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="stub_one" sortOrder="67" showInDefault="1" translate="label" type="textarea" canRestore="1">
+                    <label>Request One Response</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                        <field id="enabled_stub">1</field>
+                    </depends>
+                </field>
+                <field id="stub_two" sortOrder="68" showInDefault="1" translate="label" type="textarea" canRestore="1">
+                    <label>Request Two Response</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                        <field id="enabled_stub">1</field>
+                    </depends>
+                </field>
+            </group>
 
-        <group id="form_dynamic" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="70" translate="label" type="text">
+            <group id="form_dynamic" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="70" translate="label" type="text">
 
-            <label>Dynamic Form Settings</label>
-            <field id="values" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="72" translate="label">
-                <label>Ranges</label>
-                <frontend_model>Iods\Configs\Block\Adminhtml\Form\Field\Ranges</frontend_model>
-                <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
-                <comment><![CDATA[
+                <label>Dynamic Form Settings</label>
+                <field id="values" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="72" translate="label">
+                    <label>Ranges</label>
+                    <frontend_model>Iods\Configs\Block\Adminhtml\Form\Field\Ranges</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <comment><![CDATA[
                     <a href="https://devdocs.magento.com/guides/v2.4/ext-best-practices/tutorials/dynamic-row-system-config.html" target="_blank">Dynamic Row System Configuration</a>
                 ]]></comment>
-            </field>
-        </group>
+                </field>
+            </group>
 
-        <group id="frontend_model" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="70" translate="label" type="text">
-            <label>Frontend Model Settings</label>
-            <field id="color" translate="label,comment" type="text" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10">
-                <label>Color</label>
-                <frontend_model>Iods\Configs\Block\Adminhtml\ColorPicker</frontend_model>
-                <comment>Default is #004445</comment>
-            </field>
-        </group>
-    </section>
+            <group id="frontend_model" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="70" translate="label" type="text">
+                <label>Frontend Model Settings</label>
+                <field id="color" translate="label,comment" type="text" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10">
+                    <label>Color</label>
+                    <frontend_model>Iods\Configs\Block\Adminhtml\ColorPicker</frontend_model>
+                    <comment>Default is #004445</comment>
+                </field>
+            </group>
+
+        </section>
+    </system>
 </config>
